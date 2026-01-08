@@ -13,35 +13,11 @@
         html { scroll-behavior: smooth; }
         body { font-family: 'Inter', sans-serif; transition: filter 0.4s ease; }
         .serif { font-family: 'Bodoni Moda', serif; }
-        
-        /* Blur Effect */
         .blur-body { filter: blur(15px); pointer-events: none; }
-        
-        /* Smooth Modal */
-        #bookingModal { 
-            display: none; 
-            position: fixed; 
-            inset: 0; 
-            z-index: 100; 
-            align-items: center; 
-            justify-content: center; 
-            background: transparent; 
-        }
+        #bookingModal { display: none; position: fixed; inset: 0; z-index: 100; align-items: center; justify-content: center; background: transparent; }
         #bookingModal.active { display: flex; }
-        
-        .modal-card {
-            background: white;
-            width: 90%;
-            max-width: 450px;
-            padding: 2.5rem;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-            border-radius: 4px;
-            transform: scale(0.9);
-            opacity: 0;
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
+        .modal-card { background: white; width: 95%; max-width: 450px; padding: 2rem; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); border-radius: 4px; transform: scale(0.9); opacity: 0; transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); position: relative; }
         #bookingModal.active .modal-card { transform: scale(1); opacity: 1; }
-
         .product-card img { transition: transform 1.2s cubic-bezier(0.2, 1, 0.3, 1); }
         .product-card:hover img { transform: scale(1.08); }
     </style>
@@ -50,9 +26,9 @@
 
     <div id="main-content">
         <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100 p-6">
-            <div class="max-w-7xl mx-auto flex flex-col items-center">
-                <img src="https://i.imgur.com/79M6m9E.png" alt="OG STITCHES" class="h-20 w-auto mb-4">
-                <div class="flex gap-10 text-[10px] font-bold uppercase tracking-[0.4em]">
+            <div class="max-w-7xl mx-auto flex flex-col items-center text-center">
+                <img src="https://i.imgur.com/FQJl52V.jpeg" alt="OG STITCHES" class="h-24 w-auto mb-4 object-contain rounded-sm shadow-sm">
+                <div class="flex gap-8 text-[10px] font-bold uppercase tracking-[0.4em]">
                     <a href="#shop" class="hover:text-stone-400 transition">Collection</a>
                     <a href="#about" class="hover:text-stone-400 transition">Heritage</a>
                     <a href="#contact" class="hover:text-stone-400 transition">Contact</a>
@@ -60,14 +36,14 @@
             </div>
         </nav>
 
-        <header class="py-24 px-6 text-center">
+        <header class="py-20 px-6 text-center">
             <h1 class="serif text-6xl md:text-9xl italic mb-6 tracking-tighter">Bespoke Excellence.</h1>
             <p class="text-[10px] text-gray-400 uppercase tracking-[0.6em]">No. 2 Peu Street, Badagry</p>
         </header>
 
         <main id="shop" class="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-24">
-            
             <script>
+                // Item "Bespoke Masterpiece" removed as requested
                 const products = [
                     { name: "Signature White Senator", price: 35000, img: "https://i.imgur.com/AxhTo9F.jpeg" },
                     { name: "Classic Black Kaftan", price: 35000, img: "https://i.imgur.com/Ka76BKP.jpeg" },
@@ -84,13 +60,12 @@
                     { name: "Midnight Navy Suit", price: 42000, img: "https://i.imgur.com/0mCFg3E.jpeg" },
                     { name: "Cream Wedding Guest", price: 35000, img: "https://i.imgur.com/p4xNpYP.jpeg" },
                     { name: "Bold Stripe Native", price: 30000, img: "https://i.imgur.com/SpgPY3X.jpeg" },
-                    { name: "Urban Style Kaftan", price: 33000, img: "https://i.imgur.com/NOahIb4.jpeg" },
-                    { name: "Bespoke Masterpiece", price: 50000, img: "https://i.imgur.com/FQJl52V.jpeg" }
+                    { name: "Urban Style Kaftan", price: 33000, img: "https://i.imgur.com/NOahIb4.jpeg" }
                 ];
 
                 document.write(products.map(p => `
                     <div class="product-card group cursor-pointer" onclick="openBooking('${p.name}', ${p.price})">
-                        <div class="aspect-[3/4] overflow-hidden bg-gray-50 mb-6 relative">
+                        <div class="aspect-[3/4] overflow-hidden bg-gray-50 mb-6 relative shadow-sm">
                             <img src="${p.img}" class="w-full h-full object-cover">
                             <div class="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                         </div>
@@ -109,7 +84,8 @@
         <section id="about" class="bg-stone-50 py-32 px-6 text-center border-y border-stone-100 mt-20">
             <h2 class="serif text-4xl italic mb-6">Our Story</h2>
             <p class="max-w-xl mx-auto text-stone-500 leading-loose text-sm tracking-wide">
-                Located in the heart of Badagry, OG Stitches represents the pinnacle of Nigerian tailoring. We believe that a true fit is not just about measurements, but about character.
+                Located in the heart of Badagry, OG Stitches represents the pinnacle of Nigerian tailoring. 
+                We believe that a true fit is not just about measurements, but about character.
             </p>
         </section>
 
@@ -124,22 +100,33 @@
         <div class="modal-card">
             <button onclick="closeBooking()" class="absolute top-6 right-6 text-2xl font-light">✕</button>
             <h2 class="serif text-3xl italic mb-2">Book Fitting</h2>
-            <p id="modalItemName" class="text-[10px] text-stone-400 uppercase tracking-widest mb-10 border-b pb-4"></p>
+            <p id="modalItemName" class="text-[10px] text-stone-400 uppercase tracking-widest mb-8 border-b pb-4"></p>
 
-            <form id="orderForm" class="space-y-6">
-                <input type="text" id="custName" placeholder="Full Name" required class="w-full border-b border-stone-200 py-3 outline-none focus:border-black transition text-sm">
-                <div class="grid grid-cols-2 gap-6">
-                    <input type="tel" id="custPhone" placeholder="Phone Number" required class="w-full border-b border-stone-200 py-3 outline-none focus:border-black transition text-sm">
-                    <select id="custSex" required class="w-full border-b border-stone-200 py-3 outline-none bg-transparent text-sm text-stone-500">
+            <form id="orderForm" class="space-y-5">
+                <input type="text" id="custName" placeholder="Full Name" required class="w-full border-b border-stone-200 py-2 outline-none focus:border-black transition text-sm">
+                
+                <div class="grid grid-cols-2 gap-4">
+                    <input type="tel" id="custPhone" placeholder="Phone Number" required class="w-full border-b border-stone-200 py-2 outline-none focus:border-black transition text-sm">
+                    <select id="custSex" required class="w-full border-b border-stone-200 py-2 outline-none bg-transparent text-sm text-stone-500">
                         <option value="">Gender</option>
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
                     </select>
                 </div>
-                <input type="text" id="custAddress" placeholder="Delivery Address" required class="w-full border-b border-stone-200 py-3 outline-none focus:border-black transition text-sm">
                 
-                <div class="flex justify-between items-center py-6">
-                    <span class="text-[10px] font-black uppercase tracking-widest">Total Price</span>
+                <input type="text" id="custAddress" placeholder="Delivery Address" required class="w-full border-b border-stone-200 py-2 outline-none focus:border-black transition text-sm">
+
+                <div class="flex items-center justify-between py-4 border-b border-stone-50">
+                    <span class="text-[10px] font-black uppercase tracking-widest text-stone-400">Quantity</span>
+                    <div class="flex items-center gap-6">
+                        <button type="button" onclick="changeQty(-1)" class="text-xl px-2">—</button>
+                        <span id="qtyDisplay" class="font-bold text-lg">1</span>
+                        <button type="button" onclick="changeQty(1)" class="text-xl px-2">＋</button>
+                    </div>
+                </div>
+                
+                <div class="flex justify-between items-center py-4">
+                    <span class="text-[10px] font-black uppercase tracking-widest text-stone-400">Total Price</span>
                     <span id="totalDisplay" class="text-2xl font-black italic"></span>
                 </div>
 
@@ -151,6 +138,7 @@
     <script>
         let currentItem = "";
         let basePrice = 0;
+        let currentQty = 1;
 
         // --- REPLACE THESE ---
         const BOT_TOKEN = "YOUR_BOT_TOKEN_HERE";
@@ -159,10 +147,11 @@
         function openBooking(name, price) {
             currentItem = name;
             basePrice = price;
+            currentQty = 1;
             document.getElementById('modalItemName').innerText = name;
-            document.getElementById('totalDisplay').innerText = "₦" + price.toLocaleString();
+            document.getElementById('qtyDisplay').innerText = currentQty;
+            updatePriceDisplay();
             
-            // Apply Blur and Show Modal
             document.getElementById('main-content').classList.add('blur-body');
             document.getElementById('bookingModal').classList.add('active');
         }
@@ -172,7 +161,16 @@
             document.getElementById('bookingModal').classList.remove('active');
         }
 
-        // Close on clicking outside the card
+        function changeQty(amt) {
+            currentQty = Math.max(1, currentQty + amt);
+            document.getElementById('qtyDisplay').innerText = currentQty;
+            updatePriceDisplay();
+        }
+
+        function updatePriceDisplay() {
+            document.getElementById('totalDisplay').innerText = "₦" + (basePrice * currentQty).toLocaleString();
+        }
+
         window.onclick = function(event) {
             let modal = document.getElementById('bookingModal');
             if (event.target == modal) closeBooking();
@@ -185,10 +183,13 @@
             btn.disabled = true;
 
             const message = `
-👔 *NEW OG STITCHES ORDER*
-Item: ${currentItem}
-Price: ₦${basePrice.toLocaleString()}
+🇳🇬 *NEW OG STITCHES ORDER*
 --------------------------
+*Item:* ${currentItem}
+*Quantity:* ${currentQty}
+*Total:* ₦${(basePrice * currentQty).toLocaleString()}
+
+*Client Details:*
 Name: ${document.getElementById('custName').value}
 Phone: ${document.getElementById('custPhone').value}
 Gender: ${document.getElementById('custSex').value}
@@ -198,12 +199,12 @@ Address: ${document.getElementById('custAddress').value}`;
                 await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ chat_id: CHAT_ID, text: message })
+                    body: JSON.stringify({ chat_id: CHAT_ID, text: message, parse_mode: 'Markdown' })
                 });
                 Toastify({ text: "ORDER SUCCESSFUL", duration: 4000, gravity: "top", position: "center", backgroundColor: "#000" }).showToast();
                 closeBooking();
             } catch (err) {
-                alert("Connection error. Call 09116921537.");
+                alert("Connection error. Please contact 09116921537.");
             } finally {
                 btn.innerText = "CONFIRM APPOINTMENT";
                 btn.disabled = false;
