@@ -201,7 +201,16 @@ Address: ${document.getElementById('custAddress').value}`;
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ chat_id: CHAT_ID, text: message, parse_mode: 'Markdown' })
                 });
-                Toastify({ text: "ORDER SUCCESSFUL", duration: 4000, gravity: "top", position: "center", backgroundColor: "#000" }).showToast();
+                
+                // Toast message restored here
+                Toastify({ 
+                    text: "ORDER SUCCESSFUL", 
+                    duration: 4000, 
+                    gravity: "top", 
+                    position: "center", 
+                    backgroundColor: "#000" 
+                }).showToast();
+                
                 closeBooking();
                 document.getElementById('orderForm').reset();
             } catch (err) {
