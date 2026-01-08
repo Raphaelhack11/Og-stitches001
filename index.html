@@ -13,10 +13,10 @@
         html { scroll-behavior: smooth; }
         body { font-family: 'Inter', sans-serif; transition: filter 0.4s ease; }
         .serif { font-family: 'Bodoni Moda', serif; }
-        .blur-body { filter: blur(15px); pointer-events: none; }
+        .blur-body { filter: blur(20px); pointer-events: none; }
         #bookingModal { display: none; position: fixed; inset: 0; z-index: 100; align-items: center; justify-content: center; background: transparent; }
         #bookingModal.active { display: flex; }
-        .modal-card { background: white; width: 95%; max-width: 450px; padding: 2rem; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); border-radius: 4px; transform: scale(0.9); opacity: 0; transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); position: relative; }
+        .modal-card { background: white; width: 95%; max-width: 450px; padding: 2.5rem; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); border-radius: 2px; transform: scale(0.9); opacity: 0; transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); position: relative; }
         #bookingModal.active .modal-card { transform: scale(1); opacity: 1; }
         .product-card img { transition: transform 1.2s cubic-bezier(0.2, 1, 0.3, 1); }
         .product-card:hover img { transform: scale(1.08); }
@@ -27,7 +27,7 @@
     <div id="main-content">
         <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-100 p-6">
             <div class="max-w-7xl mx-auto flex flex-col items-center text-center">
-                <img src="https://i.imgur.com/FQJl52V.jpeg" alt="OG STITCHES" class="h-24 w-auto mb-4 object-contain rounded-sm shadow-sm">
+                <img src="https://i.imgur.com/FQJl52V.jpeg" alt="OG STITCHES" class="h-24 w-auto mb-4 object-contain">
                 <div class="flex gap-8 text-[10px] font-bold uppercase tracking-[0.4em]">
                     <a href="#shop" class="hover:text-stone-400 transition">Collection</a>
                     <a href="#about" class="hover:text-stone-400 transition">Heritage</a>
@@ -38,29 +38,28 @@
 
         <header class="py-20 px-6 text-center">
             <h1 class="serif text-6xl md:text-9xl italic mb-6 tracking-tighter">Bespoke Excellence.</h1>
-            <p class="text-[10px] text-gray-400 uppercase tracking-[0.6em]">No. 2 Peu Street, Badagry</p>
+            <p class="text-[10px] text-gray-400 uppercase tracking-[0.6em]">No 5, Oluwanishola street Mowo Extension, Badagry</p>
         </header>
 
         <main id="shop" class="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-24">
             <script>
-                // Item "Bespoke Masterpiece" removed as requested
                 const products = [
                     { name: "Signature White Senator", price: 65000, img: "https://i.imgur.com/AxhTo9F.jpeg" },
                     { name: "Classic Black Kaftan", price: 170000, img: "https://i.imgur.com/Ka76BKP.jpeg" },
-                    { name: "Premium Blue Suite", price: 57000, img: "https://i.imgur.com/9aMZF4t.jpeg" },
-                    { name: "Traditional Agbada", price: 50000, img: "https://i.imgur.com/olKCouS.jpeg" },
-                    { name: "Corporate Native Wear", price: 47000, img: "https://i.imgur.com/BUnK70e.jpeg" },
-                    { name: "Luxury Embroidered Top", price: 60000, img: "https://i.imgur.com/zKqnwSn.jpeg" },
-                    { name: "Modern Short Sleeve", price: 40000, img: "https://i.imgur.com/CUUa81w.jpeg" },
-                    { name: "Royal Gold Detail", price: 45000, img: "https://i.imgur.com/jg87N80.jpeg" },
-                    { name: "Executive Grey Senator", price: 40000, img: "https://i.imgur.com/7x625pM.jpeg" },
-                    { name: "Patterned Cultural Wear", price: 40000, img: "https://i.imgur.com/7wA7oe2.jpeg" },
-                    { name: "Deep Wine Senator", price: 95000, img: "https://i.imgur.com/K7xIGdi.jpeg" },
-                    { name: "Sky Blue Daily Wear", price: 60000, img: "https://i.imgur.com/1LLbsPf.jpeg" },
+                    { name: "Ocean Blue Two-Piece", price: 57000, img: "https://i.imgur.com/9aMZF4t.jpeg" },
+                    { name: "Royal White Agbada", price: 50000, img: "https://i.imgur.com/olKCouS.jpeg" },
+                    { name: "Wine Embroidered Native", price: 47000, img: "https://i.imgur.com/BUnK70e.jpeg" },
+                    { name: "Sky Blue Short-Sleeve", price: 60000, img: "https://i.imgur.com/zKqnwSn.jpeg" },
+                    { name: "Sand Beige Senator", price: 40000, img: "https://i.imgur.com/CUUa81w.jpeg" },
+                    { name: "Golden Embroidery Kaftan", price: 45000, img: "https://i.imgur.com/jg87N80.jpeg" },
+                    { name: "Executive Grey Suit", price: 40000, img: "https://i.imgur.com/7x625pM.jpeg" },
+                    { name: "Patterned Cultural Attire", price: 40000, img: "https://i.imgur.com/7wA7oe2.jpeg" },
+                    { name: "Deep Maroon Senator", price: 95000, img: "https://i.imgur.com/K7xIGdi.jpeg" },
+                    { name: "Powder Blue Daily Native", price: 60000, img: "https://i.imgur.com/1LLbsPf.jpeg" },
                     { name: "Midnight Navy Suit", price: 60000, img: "https://i.imgur.com/0mCFg3E.jpeg" },
-                    { name: "Cream Wedding Guest", price: 90000, img: "https://i.imgur.com/p4xNpYP.jpeg" },
-                    { name: "Bold Stripe Native", price: 130000, img: "https://i.imgur.com/SpgPY3X.jpeg" },
-                    { name: "Urban Style Kaftan", price: 45000, img: "https://i.imgur.com/NOahIb4.jpeg" }
+                    { name: "Cream Wedding Guest Fit", price: 90000, img: "https://i.imgur.com/p4xNpYP.jpeg" },
+                    { name: "Bold Striped Traditional", price: 130000, img: "https://i.imgur.com/SpgPY3X.jpeg" },
+                    { name: "Urban Black Kaftan", price: 45000, img: "https://i.imgur.com/NOahIb4.jpeg" }
                 ];
 
                 document.write(products.map(p => `
@@ -84,14 +83,15 @@
         <section id="about" class="bg-stone-50 py-32 px-6 text-center border-y border-stone-100 mt-20">
             <h2 class="serif text-4xl italic mb-6">Our Story</h2>
             <p class="max-w-xl mx-auto text-stone-500 leading-loose text-sm tracking-wide">
-                Located in the heart of Badagry, OG Stitches represents the pinnacle of Nigerian tailoring. 
+                Located at No 5, Oluwanishola street Mowo Extension, Badagry, OG Stitches represents the pinnacle of Nigerian tailoring. 
                 We believe that a true fit is not just about measurements, but about character.
             </p>
         </section>
 
         <footer id="contact" class="py-20 px-6 text-center">
             <p class="text-[10px] font-black uppercase tracking-[0.5em] mb-4">OG Stitches Badagry</p>
-            <p class="text-sm text-stone-400 mb-10">09116921537 • 07045617191</p>
+            <p class="text-sm text-stone-500 mb-2">No 5, Oluwanishola street Mowo Extension, Badagry</p>
+            <p class="text-sm text-stone-400 mb-10">ayindefuhad1@gmail.com • 09116921537</p>
             <a href="https://wa.me/2347045617191" class="bg-black text-white px-12 py-5 text-[10px] font-bold uppercase tracking-[0.3em] hover:bg-stone-800 transition">WhatsApp Inquiry</a>
         </footer>
     </div>
@@ -140,7 +140,7 @@
         let basePrice = 0;
         let currentQty = 1;
 
-        // --- REPLACE THESE ---
+        // --- REPLACE THESE WITH YOUR TELEGRAM DETAILS ---
         const BOT_TOKEN = "YOUR_BOT_TOKEN_HERE";
         const CHAT_ID = "YOUR_CHAT_ID_HERE";
 
@@ -203,6 +203,7 @@ Address: ${document.getElementById('custAddress').value}`;
                 });
                 Toastify({ text: "ORDER SUCCESSFUL", duration: 4000, gravity: "top", position: "center", backgroundColor: "#000" }).showToast();
                 closeBooking();
+                document.getElementById('orderForm').reset();
             } catch (err) {
                 alert("Connection error. Please contact 09116921537.");
             } finally {
