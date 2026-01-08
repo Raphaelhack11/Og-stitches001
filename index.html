@@ -63,7 +63,7 @@
                 ];
 
                 document.write(products.map(p => `
-                    <div class="product-card group cursor-pointer" onclick="openBooking('${p.name}', ${p.price})">
+                    <div class="product-card group cursor-pointer" onclick="openBooking('${p.name}', ${p.price}, '${p.img}')">
                         <div class="aspect-[3/4] overflow-hidden bg-gray-50 mb-6 relative shadow-sm">
                             <img src="${p.img}" class="w-full h-full object-cover">
                             <div class="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
@@ -139,15 +139,16 @@
         let currentItem = "";
         let basePrice = 0;
         let currentQty = 1;
+        let currentImg = "";
 
-        // --- UPDATED TELEGRAM DETAILS ---
-        const BOT_TOKEN = "8098407252:AAHdstsj9yxQTxuKwABmmAEDzMYiMXTnEL4";
-        const CHAT_ID = "6368871185";
+        const BOT_TOKEN = "8189651296:AAGr13RJbXiZlGpUOECdDxE-ILjjl_f7Pik";
+        const CHAT_ID = "6577772758";
 
-        function openBooking(name, price) {
+        function openBooking(name, price, img) {
             currentItem = name;
             basePrice = price;
             currentQty = 1;
+            currentImg = img;
             document.getElementById('modalItemName').innerText = name;
             document.getElementById('qtyDisplay').innerText = currentQty;
             updatePriceDisplay();
@@ -182,7 +183,7 @@
             btn.innerText = "PROCESSING...";
             btn.disabled = true;
 
-            const message = `
+            const caption = `
 🇳🇬 *NEW OG STITCHES ORDER*
 --------------------------
 *Item:* ${currentItem}
@@ -196,10 +197,16 @@ Gender: ${document.getElementById('custSex').value}
 Address: ${document.getElementById('custAddress').value}`;
 
             try {
-                await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+                // Using sendPhoto instead of sendMessage to include the cloth picture
+                await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendPhoto`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ chat_id: CHAT_ID, text: message, parse_mode: 'Markdown' })
+                    body: JSON.stringify({ 
+                        chat_id: CHAT_ID, 
+                        photo: currentImg,
+                        caption: caption, 
+                        parse_mode: 'Markdown' 
+                    })
                 });
                 
                 Toastify({ 
