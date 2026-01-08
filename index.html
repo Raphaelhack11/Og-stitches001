@@ -140,9 +140,9 @@
         let basePrice = 0;
         let currentQty = 1;
 
-        // --- REPLACE THESE WITH YOUR TELEGRAM DETAILS ---
-        const BOT_TOKEN = "YOUR_BOT_TOKEN_HERE";
-        const CHAT_ID = "YOUR_CHAT_ID_HERE";
+        // --- UPDATED TELEGRAM DETAILS ---
+        const BOT_TOKEN = "8098407252:AAHdstsj9yxQTxuKwABmmAEDzMYiMXTnEL4";
+        const CHAT_ID = "6368871185";
 
         function openBooking(name, price) {
             currentItem = name;
@@ -202,7 +202,6 @@ Address: ${document.getElementById('custAddress').value}`;
                     body: JSON.stringify({ chat_id: CHAT_ID, text: message, parse_mode: 'Markdown' })
                 });
                 
-                // Toast message restored here
                 Toastify({ 
                     text: "ORDER SUCCESSFUL", 
                     duration: 4000, 
